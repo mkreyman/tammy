@@ -25,7 +25,7 @@ config :logger, :console,
 # Configure Bamboo with SendGrid adapter
 config :tammy, Tammy.Mailer,
   # adapter: Bamboo.SendGridAdapter,
-  # api_key: "my_api_key"
+  # api_key: System.get_env("SENDGRID_API_KEY") || "SendGrid API Key not set"
   Bamboo.LocalAdapter
 
 # Import environment specific config. This must remain at the bottom

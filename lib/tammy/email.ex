@@ -1,21 +1,20 @@
 defmodule Tammy.Email do
   import Bamboo.Email
 
-  def welcome_email do
-    new_email(
-      to: "john@gmail.com",
-      from: "support@myapp.com",
-      subject: "Welcome to the app.",
-      html_body: "<strong>Thanks for joining!</strong>",
-      text_body: "Thanks for joining!"
-    )
+  alias __MODULE__, warn: false
 
-    # or pipe using Bamboo.Email functions
-    # new_email
-    # |> to("foo@example.com")
-    # |> from("me@example.com")
-    # |> subject("Welcome!!!")
-    # |> html_body("<strong>Welcome</strong>")
-    # |> text_body("welcome")
+    defstruct from: nil,
+              to: nil,
+              cc: nil,
+              bcc: nil,
+              subject: nil,
+              html_body: nil,
+              text_body: nil,
+              attachments: []
+
+  def compose(%Email{} = email) do
+    email
+    |> Map.from_struct
+    |> new_email()
   end
 end

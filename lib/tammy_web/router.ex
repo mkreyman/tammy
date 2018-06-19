@@ -13,4 +13,10 @@ defmodule TammyWeb.Router do
     # If using Phoenix
     forward "/sent_emails", Bamboo.SentEmailViewerPlug
   end
+
+  scope "/", TammyWeb do
+    pipe_through(:api)
+
+    post("/parse", ParserController, :parse_and_forward)
+  end
 end
