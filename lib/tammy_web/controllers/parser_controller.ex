@@ -9,6 +9,7 @@ defmodule TammyWeb.ParserController do
     Parser.normalize(%{}, params)
     |> Email.compose()
     |> Mailer.deliver_later()
+
     # |> IO.inspect()
 
     conn
