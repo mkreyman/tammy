@@ -26,13 +26,13 @@ defmodule TammyWeb.ConnCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Tammy.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Tammy.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end

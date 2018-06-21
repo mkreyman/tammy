@@ -6,16 +6,14 @@
 use Mix.Config
 
 # General application configuration
-config :tammy,
-  ecto_repos: [Tammy.Repo]
+config :tammy, ecto_repos: [Tammy.Repo]
 
 # Configures the endpoint
 config :tammy, TammyWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "I9O/rlP6xi1jtdFPaH3aM0EV//yczsyh8kaVlSJFmHco/Evo9FprSi02FWxPVSPG",
   render_errors: [view: TammyWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Tammy.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Tammy.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -30,4 +28,4 @@ config :tammy, Tammy.Mailer,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

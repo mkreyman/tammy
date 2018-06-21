@@ -9,7 +9,7 @@ defmodule Tammy.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(TammyWeb.Endpoint, []),
+      supervisor(TammyWeb.Endpoint, [])
       # Start your own worker by calling: Tammy.Worker.start_link(arg1, arg2, arg3)
       # worker(Tammy.Worker, [arg1, arg2, arg3]),
     ]

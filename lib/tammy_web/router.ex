@@ -2,16 +2,16 @@ defmodule TammyWeb.Router do
   use TammyWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/api", TammyWeb do
-    pipe_through :api
+    pipe_through(:api)
   end
 
-  if Mix.env == :dev do
+  if Mix.env() == :dev do
     # If using Phoenix
-    forward "/sent_emails", Bamboo.SentEmailViewerPlug
+    forward("/sent_emails", Bamboo.SentEmailViewerPlug)
   end
 
   scope "/", TammyWeb do

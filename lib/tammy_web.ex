@@ -28,8 +28,9 @@ defmodule TammyWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/tammy_web/templates",
-                        namespace: TammyWeb
+      use Phoenix.View,
+        root: "lib/tammy_web/templates",
+        namespace: TammyWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
