@@ -4,9 +4,11 @@ defmodule TammyWeb.ParserController do
   alias Tammy.{Parser, Email, Mailer}
 
   def parse_and_forward(conn, params) do
-    Parser.normalize(%Email{}, params)
+    IO.inspect params
+
+    Parser.normalize(%{}, params)
     |> Email.compose()
-    # |> Mailer.deliver_later()
+    |> Mailer.deliver_later()
     |> IO.inspect()
 
     conn
