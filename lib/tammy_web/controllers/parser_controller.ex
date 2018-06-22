@@ -1,16 +1,10 @@
 defmodule TammyWeb.ParserController do
   use TammyWeb, :controller
 
-  alias Tammy.{Parser, Email, Mailer}
+  alias Tammy.Parser
 
   def parse_and_forward(conn, params) do
-    # IO.inspect(params)
-
-    Parser.normalize(%{}, params)
-    |> Email.compose()
-    |> Mailer.deliver_later()
-
-    # |> IO.inspect()
+    Parser.call(params)
 
     conn
     |> put_status(:ok)

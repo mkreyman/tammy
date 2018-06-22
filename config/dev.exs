@@ -32,15 +32,20 @@ config :tammy, TammyWeb.Endpoint,
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
+config :logger,
+  level: :debug,
+  truncate: :infinity,
+  enable_pipe_debug: true
+
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :tammy, Tammy.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "tammy_dev",
-  hostname: "localhost",
-  pool_size: 10
+# config :tammy, Tammy.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "tammy_dev",
+#   hostname: "localhost",
+#   pool_size: 10
