@@ -1,10 +1,22 @@
 defmodule TammyWeb.ParserController do
   use TammyWeb, :controller
 
-  alias Tammy.Parser
+  require Logger
 
-  def parse_and_forward(conn, params) do
-    Parser.call(params)
+  alias Tammy.{Filter, Parser, Email, Mailer}
+
+  def handle_call(conn, params) do
+    with {:match, updated_params} <- Filter.match_recipient(params) do
+      updated_params
+      |> Parser.normalize()
+      |> Email.compose()
+      |> Mailer.deliver_later()
+    else
+      {:no_match, to, map} ->
+        Logger.info(
+          "Uknown email address #{inspect(to)} in translation map #{inspect(map)} -- Message dropped!"
+        )
+    end
 
     conn
     |> put_status(:ok)

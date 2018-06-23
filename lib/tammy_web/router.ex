@@ -17,6 +17,6 @@ defmodule TammyWeb.Router do
   scope "/", TammyWeb do
     pipe_through(:api)
 
-    post("/parse", ParserController, :parse_and_forward)
+    post("/parse", ParserController, :handle_call)
   end
 end
