@@ -24,13 +24,18 @@ config :logger, :console,
 config :tammy, Tammy.Mailer,
   adapter: Bamboo.SendGridAdapter,
   api_key: System.get_env("SENDGRID_API_KEY") || "SendGrid API Key not set"
-  # adapter: Bamboo.LocalAdapter
+
+# adapter: Bamboo.LocalAdapter
 
 # Configure Tammy.Filter with forwarding map
 config :tammy,
        :filter,
        System.get_env("SENDGRID_FORWARDERS") ||
          "{\"original@example.com\":\"forwarder@example.com\"}"
+
+config :tammy,
+       :from_address,
+       System.get_env("SENDGRID_FROM_ADDRESS") || "test@example.com"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

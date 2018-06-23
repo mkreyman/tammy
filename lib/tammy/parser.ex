@@ -1,9 +1,11 @@
 defmodule Tammy.Parser do
+  @from_address Application.get_env(:tammy, :from_address)
+
   def normalize(
         %{"from" => from, "to" => to, "subject" => subject, "html" => html, "text" => text} =
           params
       ) do
-    %{from: from, to: to, subject: subject, html_body: html, text_body: text, attachments: nil}
+    %{from: @from_address, to: to, subject: subject, html_body: html, text_body: text, attachments: []}
     |> put_attachments(params)
   end
 
