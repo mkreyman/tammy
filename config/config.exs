@@ -22,9 +22,9 @@ config :logger, :console,
 
 # Configure Bamboo with SendGrid adapter
 config :tammy, Tammy.Mailer,
-  # adapter: Bamboo.SendGridAdapter,
-  # api_key: System.get_env("SENDGRID_API_KEY") || "SendGrid API Key not set"
-  adapter: Bamboo.LocalAdapter
+  adapter: Bamboo.SendGridAdapter,
+  api_key: System.get_env("SENDGRID_API_KEY") || "SendGrid API Key not set"
+  # adapter: Bamboo.LocalAdapter
 
 # Configure Tammy.Filter with forwarding map
 config :tammy,
