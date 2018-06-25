@@ -7,8 +7,7 @@ defmodule Tammy.Parser do
           "html" => html,
           "text" => text,
           "orig_from" => orig_from,
-          "orig_to" => orig_to,
-          "orig_cc" => orig_cc
+          "orig_to" => orig_to
         } = params
       ) do
     %{
@@ -18,8 +17,7 @@ defmodule Tammy.Parser do
       html_body: html,
       text_body: text,
       orig_from: orig_from,
-      orig_to: orig_to,
-      orig_cc: orig_cc,
+      orig_to: orig_to
       attachments: []
     }
     |> put_attachments(params)

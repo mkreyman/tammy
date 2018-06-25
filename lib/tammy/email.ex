@@ -24,14 +24,13 @@ defmodule Tammy.Email do
   end
 
   defp prepend_orig_text_body(
-         %{orig_from: orig_from, orig_to: orig_to, orig_cc: orig_cc, text_body: text} = email
+         %{orig_from: orig_from, orig_to: orig_to, text_body: text} = email
        ) do
     text = """
     \nThe following message was sent to you via SendGrid Inbound Parse API:
 
     FROM: #{format_address(orig_from)}
     TO: #{format_address(orig_to)}
-    CC: #{format_address(orig_cc)}
 
     NOTE: For html formatted version, if there was any, please see attached html file. 
 
@@ -43,7 +42,6 @@ defmodule Tammy.Email do
     |> Map.delete(:html_body)
     |> Map.delete(:orig_from)
     |> Map.delete(:orig_to)
-    |> Map.delete(:orig_cc)
   end
 
   defp create_attachment(content) do

@@ -2,7 +2,7 @@ defmodule Tammy.Filter do
   @translation_map Application.get_env(:tammy, :filter)
 
   def match_recipient(
-        %{"to" => orig_to, "from" => orig_from, "cc" => orig_cc, "envelope" => envelope} = params
+        %{"to" => orig_to, "from" => orig_from, "envelope" => envelope} = params
       ) do
     %{"from" => from, "to" => [to | _]} = Poison.decode!(envelope)
 
@@ -10,7 +10,6 @@ defmodule Tammy.Filter do
       params
       |> Map.put("orig_to", orig_to)
       |> Map.put("orig_from", orig_from)
-      |> Map.put("orig_cc", orig_cc)
       |> Map.put("to", to)
       |> Map.put("from", from)
 
