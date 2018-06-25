@@ -17,7 +17,7 @@ defmodule Tammy.Parser do
       html_body: html,
       text_body: text,
       orig_from: orig_from,
-      orig_to: orig_to
+      orig_to: orig_to,
       attachments: []
     }
     |> put_attachments(params)
