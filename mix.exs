@@ -41,7 +41,8 @@ defmodule Tammy.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       # {:bamboo, "~> 1.0"}
-      {:bamboo, github: "thoughtbot/bamboo"}
+      {:bamboo, github: "thoughtbot/bamboo"},
+      {:briefly, "~> 0.3"}
     ]
   end
 

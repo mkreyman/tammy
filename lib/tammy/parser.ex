@@ -1,11 +1,27 @@
 defmodule Tammy.Parser do
-  @from_address Application.get_env(:tammy, :from_address)
-
   def normalize(
-        %{"from" => from, "to" => to, "subject" => subject, "html" => html, "text" => text} =
-          params
+        %{
+          "from" => from,
+          "to" => to,
+          "subject" => subject,
+          "html" => html,
+          "text" => text,
+          "orig_from" => orig_from,
+          "orig_to" => orig_to,
+          "orig_cc" => orig_cc
+        } = params
       ) do
-    %{from: @from_address, to: to, subject: subject, html_body: html, text_body: text, attachments: []}
+    %{
+      from: from,
+      to: to,
+      subject: subject,
+      html_body: html,
+      text_body: text,
+      orig_from: orig_from,
+      orig_to: orig_to,
+      orig_cc: orig_cc,
+      attachments: []
+    }
     |> put_attachments(params)
   end
 
