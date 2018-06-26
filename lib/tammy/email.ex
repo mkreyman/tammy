@@ -27,10 +27,11 @@ defmodule Tammy.Email do
     text = """
     \nThe following message was sent to you via SendGrid Inbound Parse API:
 
-    FROM: #{format_address(orig_from)}
-    TO: #{format_address(orig_to)}
+    FROM: #{orig_from}
 
-    NOTE: For html formatted version, if there was any, please see attached html file. 
+    TO: #{orig_to}
+
+    NOTE: For html formatted version, if there was any, please see attached html file.
 
     #{text}
     """
@@ -55,11 +56,5 @@ defmodule Tammy.Email do
 
   defp replace_orig_from(%{from: _} = email) do
     %{email | from: @from_address}
-  end
-
-  defp format_address(address) do
-    address
-    |> String.replace("<", "&lt;")
-    |> String.replace(">", "&gt;")
   end
 end
