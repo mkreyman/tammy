@@ -63,3 +63,8 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 # import_config "prod.secret.exs"
+
+# Configure Bamboo with SendGrid adapter
+config :tammy, Tammy.Mailer,
+  adapter: Bamboo.SendGridAdapter,
+  api_key: System.get_env("SENDGRID_API_KEY") || "SendGrid API Key not set"

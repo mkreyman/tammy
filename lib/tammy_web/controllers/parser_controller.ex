@@ -7,10 +7,13 @@ defmodule TammyWeb.ParserController do
 
   def handle_call(conn, params) do
     with {:match, updated_params} <- Filter.match_recipient(params) do
-      updated_params
-      |> Parser.normalize()
-      |> Email.compose()
-      |> Mailer.deliver_later()
+      email =
+        updated_params
+        |> Parser.normalize()
+        |> Email.compose()
+
+      Mailer.deliver_later(email)
+      Logger.info("Queued for delivery: \n#{inspect(email)}")
     else
       {:no_match, to, map} ->
         Logger.info(

@@ -23,9 +23,7 @@ defmodule Tammy.Email do
     %{email | attachments: [create_attachment(html) | attachments]}
   end
 
-  defp prepend_orig_text_body(
-         %{orig_from: orig_from, orig_to: orig_to, text_body: text} = email
-       ) do
+  defp prepend_orig_text_body(%{orig_from: orig_from, orig_to: orig_to, text_body: text} = email) do
     text = """
     \nThe following message was sent to you via SendGrid Inbound Parse API:
 

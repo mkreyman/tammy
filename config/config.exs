@@ -20,12 +20,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
-# Configure Bamboo with SendGrid adapter
-config :tammy, Tammy.Mailer,
-  # adapter: Bamboo.SendGridAdapter,
-  # api_key: System.get_env("SENDGRID_API_KEY") || "SendGrid API Key not set"
-  adapter: Bamboo.LocalAdapter
-
 config :briefly,
   directory: [{:system, "TMPDIR"}, {:system, "TMP"}, {:system, "TEMP"}, "/tmp"],
   default_prefix: "original",
